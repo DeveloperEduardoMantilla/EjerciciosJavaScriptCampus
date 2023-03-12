@@ -1,16 +1,19 @@
-//Ejercicio 1
+//Ejercicio 2
+/* Dado un número indicar si es par o impar y si es mayor de 10. */
+let respuesta=" ";
+let numero=0
+do {
+    numero = parseInt(prompt('Digite un numero para saber si par o impar', 5))
+    if (numero % 2 == 0) {
+        respuesta="";
+        respuesta+='El numero ' + numero + ' es par';
+        numero>9?respuesta+=" y es mayor a 10":respuesta+=" y es menor a 10";
+        console.log(respuesta)
+    } else {
+        respuesta="";
+        respuesta+='El numero ' + numero + ' es impar';
+        numero>9?respuesta+=" y es mayor a 10":respuesta+=" y es menor a 10";
+        console.log(respuesta)
+    }
+} while (confirm('Desea revisar otro numero?'))
 
-/* Construir el algoritmo para un programa que ingrese tres
-notas de un alumno, si el promedio es menor o igual a 3.9
-mostrar un mensaje "Estudie“, de lo contrario un mensaje que
-diga "becado" */
-let notas = []
-let totalNotas = 0
-let promedio=0
-for (i = 0; i < 3; i++) {
- notas.push(prompt('Digite la nota ' + (i + 1)))
- totalNotas += parseInt(notas[i])
-}
-
-promedio=totalNotas/3;
-promedio>3.9?console.log("Becado"):console.log("Estudie")
