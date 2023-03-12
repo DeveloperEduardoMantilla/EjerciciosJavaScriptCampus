@@ -1,37 +1,24 @@
-//Ejercicio 9
+//Ejercicio 10
 /* 
-N atletas han pasado a finales en salto triple en los juegos
-olímpicos femenino de 2022. Diseñe un programa que pida por
-teclado los nombres de cada atleta finalista y a su vez, sus
-marcas del salto en metros. Informar el nombre de la atleta
-campeona que se quede con la medalla de oro y si rompió
-récord, reportar el pago que será de 500 millones. El récord
-esta en 15,50 metros.*/
-let competidores=[]
-let lista='';
-let record='';
-let mensaje='';
-function atleta(nombre,marca){
-    this.nombre=nombre;
-    this.marca=marca;
+Desarrolle un programa cíclico que capture un dato
+numérico cada vez, y los vaya acumulando. El programa se
+detiene cuando el usuario digita un cero. El programa debe
+mostrar: LA SUMATORIA DE LOS VALORES, EL VALOR DEL
+PROMEDIO, CUÁNTOS VALORES FUERON DIGITADOS, MAYOR
+VALOR Y MENOR VALOR..*/
+let numeros=[]
+let opcion=1;
+while(opcion!=0){
+    opcion = parseInt(prompt("Digite un numero"));
+    opcion!=0?numeros.push(opcion):console.log("")
 }
-do{
-    let nombre = prompt('Digite su nombre: ');
-    let marca = prompt('Digite su marca: ');
-    let atle = new atleta(nombre, marca);
-    competidores.push(atle);
-}while(confirm("¿Desea ingresar otro competidor?"))
-record=competidores[0].marca;
-mensaje=`El competidor con mayor recor es ${competidores[0].nombre} con un recor de ${record} metros`;
+const suma = numeros.reduce((valorAnterior, valorActual) => {
+    return valorAnterior + valorActual;
+  }, 0);
+let promedio = suma / numeros.length;
 
-for (let i=0; i<competidores.length; i++) {
-    lista +=`Nombre: ${competidores[i].nombre} Marca: ${competidores[i].marca} metros \n`;
-
-    if(competidores[i].marca>record){
-        record=competidores[i].marca;
-        mensaje=`El competidor con mayor record es ${competidores[i].nombre} con un recor de ${record} metros`;
-    }
-}
-
-console.log(lista)
-console.log(mensaje)
+console.log(`Sumatoria de la lista de numeros: ${suma}
+Promedio de la lista de numeros: ${promedio}
+Tamaño de la lista de numeros: ${numeros.length}
+Numero maximo de la lista de numeros: ${Math.max(...numeros)}
+Numero minimo de la lista de numeros: ${Math.min(...numeros)}`)
