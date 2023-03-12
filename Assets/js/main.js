@@ -1,26 +1,37 @@
-//Ejercicio 8
+//Ejercicio 9
 /* 
-Programa que Ingrese por teclado:
-a. el valor del lado de un cuadrado para mostrar por pantalla el
-perímetro del mismo
-b. la base y la altura de un rectángulo para mostrar el área del
-mismo*/
+N atletas han pasado a finales en salto triple en los juegos
+olímpicos femenino de 2022. Diseñe un programa que pida por
+teclado los nombres de cada atleta finalista y a su vez, sus
+marcas del salto en metros. Informar el nombre de la atleta
+campeona que se quede con la medalla de oro y si rompió
+récord, reportar el pago que será de 500 millones. El récord
+esta en 15,50 metros.*/
+let competidores=[]
+let lista='';
+let record='';
+let mensaje='';
+function atleta(nombre,marca){
+    this.nombre=nombre;
+    this.marca=marca;
+}
 do{
-    let opcion = prompt(`Por favor seleccion que desea hacer
-    a. Hallar perimetro de un cuadrado
-    b. Area de un triangulo`)
-    switch (opcion) {
-        case 'a':
-            let perimetro=parseInt(prompt("Digite la medida de uno de los lados del cuadrado"));
-            console.log("El perimetro del cuadrado es: " +(perimetro*4))
-            break;
-        case 'b':
-            let base=parseInt(prompt("Digite la base del triangulo"));
-            let altura=parseInt(prompt("Digite la altura del triangulo"));
-            console.log("El area del triangulo es:" +((base*altura)/2));
-            break;
-        default:
-            console.log("Opcion Incorrecta")
-            break;
+    let nombre = prompt('Digite su nombre: ');
+    let marca = prompt('Digite su marca: ');
+    let atle = new atleta(nombre, marca);
+    competidores.push(atle);
+}while(confirm("¿Desea ingresar otro competidor?"))
+record=competidores[0].marca;
+mensaje=`El competidor con mayor recor es ${competidores[0].nombre} con un recor de ${record} metros`;
+
+for (let i=0; i<competidores.length; i++) {
+    lista +=`Nombre: ${competidores[i].nombre} Marca: ${competidores[i].marca} metros \n`;
+
+    if(competidores[i].marca>record){
+        record=competidores[i].marca;
+        mensaje=`El competidor con mayor record es ${competidores[i].nombre} con un recor de ${record} metros`;
     }
-}while(confirm("¿Desea realizar otra consulta?"))
+}
+
+console.log(lista)
+console.log(mensaje)
