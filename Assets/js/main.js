@@ -1,22 +1,59 @@
-//Ejercicio 5
+//Ejercicio 6
 /* 
-Construir el algoritmo que lea por teclado dos números,
-si el primero es mayor al segundo informar su suma y
-diferencia, en caso contrario, informar el producto y la
-división del primero respecto al segundo. */
-let datos=[], suma=0, diferencia=0, producto=0, division=0, mensaje="";
+Construir el algoritmo en Javascript para un programa
+para cualquier cantidad de estudiantes que lea el nombre,
+el sexo y la nota definitiva y halle al estudiante con la mayor
+nota y al estudiante con la menor nota y cuantos eran
+hombres y cuantos mujeres. */
 
-for (let i=0; i<2; i++) {
-    let dato=parseInt(prompt("Digite el numero "+(i+1)));
-    datos.push(dato);
+let estudiantes=[];
+let id=0;
+let lista='';
+let respuesta="";
+let respuesta2="";
+let nota=0;
+let notaMayor=0;
+let notaMenor=0;
+let hombres=0;
+let mujeres=0;
+function estudiante(id, nombre, sexo, notaF){
+    this.id=id;
+    this.nombre=nombre;
+    this.sexo=sexo;
+    this.notaF=notaF;
 }
-if(datos[0]>datos[1]){
-    suma=datos[0]+datos[1];
-    diferencia=datos[0]-datos[1];
-    mensaje="La suma de los numero "+datos[0]+"+"+datos[1]+" es: "+suma + " y su diferencia es de "+ diferencia; 
-}else{
-    producto=datos[0]*datos[1];
-    division=datos[0]/datos[1];
-    mensaje="El producto de los numero "+datos[0]+"*"+datos[1]+" es: "+producto + " y su division es de "+ division; 
+do{
+    id++;
+    let nombre = prompt("Digite su nombre:");
+    let sexo = parseFloat(prompt("Digite su sexo Hombre(0) - Femenino(1):"));
+    let notaF = parseFloat(prompt("Digite su nota final:"));
+    let est = new estudiante(id, nombre, sexo, notaF);
+    estudiantes.push(est);
+} while (confirm('Desea guardar otro estudiante?'))
+
+for(let i=0; i<estudiantes.length; i++){
+    lista+=
+        'id: ' + estudiantes[i].id +
+        ' Nombre: ' + estudiantes[i].nombre +
+        ' Sexo: ' + estudiantes[i].sexo +
+        ' Nota Final: ' + estudiantes[i].notaF +'\n'; 
+    if(estudiantes[i].notaF>nota){
+        notaMayor=estudiantes[i].notaF;
+        nota=estudiantes[i].notaF;
+        respuesta="El estudiante "+ estudiantes[i].nombre + " obtuvo la mayor nota con una puntuacion de " + notaMayor;
+    }
+    notaMenor=estudiantes[0].notaF;
+    if(estudiantes[i].notaF<notaMenor){
+        notaMenor=estudiantes[i].notaF;
+        respuesta2="El estudiante "+ estudiantes[i].nombre + " obtuvo la menor nota con una puntuacion de " + estudiantes[i].notaF;
+    }
+    estudiantes[i].sexo==0?hombres++:mujeres++
 }
-console.log(mensaje)
+console.log(`====Lista de estudiantes==== \n
+${lista}
+${respuesta}
+${respuesta2}
+Cantidad de niñas: ${mujeres} 
+Cantidad de hombres: ${hombres}
+` 
+)
