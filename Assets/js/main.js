@@ -1,39 +1,22 @@
-//Ejercicio 4
+//Ejercicio 5
 /* 
-Construir el algoritmo que solicite el nombre y edad de 3
-personas y determine el nombre de la persona con mayor edad. */
+Construir el algoritmo que lea por teclado dos números,
+si el primero es mayor al segundo informar su suma y
+diferencia, en caso contrario, informar el producto y la
+división del primero respecto al segundo. */
+let datos=[], suma=0, diferencia=0, producto=0, division=0, mensaje="";
 
-let datos = []
-
-function persona(id,nombre, edad){
-    this.id=id;
-    this.nombre= nombre;
-    this.edad=edad;
+for (let i=0; i<2; i++) {
+    let dato=parseInt(prompt("Digite el numero "+(i+1)));
+    datos.push(dato);
 }
-
-for (let i=0; i <3; i++) {
-    let nombre=prompt("Por favor escriba su nombre");
-    let edad=parseInt(prompt("Por favor escriba su edad"));
-    let per = new persona(i,nombre,edad);
-    datos.push(per);
+if(datos[0]>datos[1]){
+    suma=datos[0]+datos[1];
+    diferencia=datos[0]-datos[1];
+    mensaje="La suma de los numero "+datos[0]+"+"+datos[1]+" es: "+suma + " y su diferencia es de "+ diferencia; 
+}else{
+    producto=datos[0]*datos[1];
+    division=datos[0]/datos[1];
+    mensaje="El producto de los numero "+datos[0]+"*"+datos[1]+" es: "+producto + " y su division es de "+ division; 
 }
-mostrarListado();
-
-function mostrarListado(){
-    let lista='';
-    let edad=0;
-    let resultado= "";
-    for(let i=0; i<datos.length; i++){
-        lista+=
-            'id: ' + datos[i].id +
-            ' nombre: ' + datos[i].nombre +
-            ' edad: ' + datos[i].edad + '\n'; 
-        if(edad<datos[i].edad){
-            edad=datos[i].edad;
-            resultado="El jugador " + datos[i].nombre + " es el jugador con mayor edad, su edad es "+ datos[i].edad;
-        }     
-    }
-    console.log('=======Lista de Jugadores=======');
-    console.log(lista);
-    console.log(resultado);
-  }
+console.log(mensaje)
